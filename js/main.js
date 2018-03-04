@@ -14,7 +14,7 @@ function getrandomCocktail(){
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
     .then((response) => response.json())
     .then((cocktailData) =>  {
-      console.log(cocktailData)
+      displayrandomCocktail(cocktailData)
     })
     .catch((error) => {
       console.log(error);
@@ -34,6 +34,18 @@ function getCocktailByName(cocktail = "Mojito"){
     .catch((error) => {
       console.log(error);
     })
+}
+
+function displayrandomCocktail(cocktailData){
+  // const main = weatherData.main;
+  //const weather = weatherData.weather;
+  const { drinks } = cocktailData;
+  const weatherInfoElement = document.getElementById('cocktailInfo');
+  let cocktailInfo = `
+    <p> ${drinks[0].strDrink} </p>
+
+  `;
+  weatherInfoElement.innerHTML = cocktailInfo;
 }
 
 
