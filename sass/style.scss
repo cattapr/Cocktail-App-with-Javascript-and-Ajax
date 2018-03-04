@@ -1,9 +1,14 @@
 body {
 	margin:0;
-	height: 1200px;
+	min-height: 1200px;
 	background-image: url(../images/cocktailbakground.jpg);	
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+	font-family: 'Abril Fatface', cursive;
+}
+
+main {
+	margin-top: 20px;
 }
 
 .hero {
@@ -15,13 +20,12 @@ body {
 
 #moodButton {
 	background-color: rgba(255,215,0,0.6);
-	height: 45px;
+	height: 55px;
 	border-radius: 5px;
 	border:1px solid black;
-	margin-top: 5px;
-	font-size: 1.4em;
+	margin: 5px 0 40px 0;
+	font-size: 1.9em;
 	font-weight: bold;
-
 }
 
 h1 {
@@ -33,9 +37,32 @@ h2 {
 	color: white;
 	text-align: center;
 	font-size: 2.2em;
+	margin-bottom: 50px;
 }
 
-#cocktailInfo {
+.displayCocktail {
 	background: white;
 	opacity:0.85;
+}
+
+.drinkThumb {
+	height: 250px;
+	weight: 200px;
+}
+
+section {
+	margin-top: 280px;
+	height: 180px;
+	background: white;
+	opacity:0.85;
+}
+
+h3 {
+	font-size: 2.2em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.displayCocktail {
+	padding: 25px 0 25px 0;
 }
