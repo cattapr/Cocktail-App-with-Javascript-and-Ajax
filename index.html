@@ -14,11 +14,10 @@
 		</div>
 	</header>
 
-	<hr>
 	<main>
 		<div class="container">
 			<div class="row">
-				<h2>Click on your mood and I'll shake a cocktail for you:</h2>
+				<h2>Click on your mood <br> I'll shake a cocktail for you:</h2>
 				<button class="col-xs-push-2 col-xs-3 buttonBrave" id="moodButton" onclick="getrandomCocktail()">Brave</button>
 				<button class="col-xs-push-3 col-xs-3 buttonTired" id="moodButton" onclick="getrandomCocktail()">Tired</button>
 			</div><!--end of row-->
@@ -40,12 +39,13 @@
 			<div class="row">
 				<h3>If you know what you want, search for your drink here:</h3>
 				<input type="text" class="col-xs-offset-2 col-xs-6" id="searchCocktail">
-				<button class="col-xs-2 shakebutton">Shake</button>
+				<button class="col-xs-2 shakebutton" onclick="getCocktailByName()">Shake</button>
 			</div><!--end of row-->
 		</div>
 
 		<div id="cocktailInfo"></div>
 	</section>
+
 
 	<script src="js/main.js"></script>
 </body>
