@@ -86,5 +86,10 @@ function displayinputvalue(cocktailData) {
 
 }
 
-//Button shake 
+//Button shake
+$(document).ready(function(){
+	$("#buttonshake").click(function(){
+		$("#buttonshake").effect("shake",{times:4}, 400);
+	});
+});
 
