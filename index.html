@@ -9,40 +9,43 @@
 </head>
 <body>
 	<header>
-		<div class="image"></div>
-		<h1>Cocktail Night</h1>
+		<div class="hero">
+		<h1>What cocktail?</h1>
+		</div>
 	</header>
 
 	<hr>
 	<main>
 		<div class="container">
 			<div class="row">
-				<h2>Choose your mood:</h2>
-				<button class="col-xs-push-2 col-xs-3 moodButton" id="moodButton">Mood1</button>
-				<button class="col-xs-push-3 col-xs-3 moodButton" id="moodButton">Mood2</button>
-			</div>
+				<h2>Click on your mood and I'll shake a cocktail for you:</h2>
+				<button class="col-xs-push-2 col-xs-3 buttonBrave" id="moodButton" onclick="getrandomCocktail()">Brave</button>
+				<button class="col-xs-push-3 col-xs-3 buttonTired" id="moodButton" onclick="getrandomCocktail()">Tired</button>
+			</div><!--end of row-->
 
 			<div class="row">
-				<button class="col-xs-push-2 col-xs-3 moodButton" id="moodButton">Mood1</button>
-				<button class="col-xs-push-3 col-xs-3 moodButton" id="moodButton">Mood2</button>
-			</div>
+				<button class="col-xs-push-2 col-xs-3 buttonThirsty" id="moodButton" onclick="getrandomCocktail()">Thirsty</button>
+				<button class="col-xs-push-3 col-xs-3 buttonJoyous" id="moodButton" onclick="getrandomCocktail()">Joyous</button>
+			</div><!--end of row-->
 
 			<div class="row">
-				<button class="col-xs-push-2 col-xs-3 moodButton" id="moodButton">Mood1</button>
-				<button class="col-xs-push-3 col-xs-3 moodButton" id="moodButton">Mood2</button>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="shakeCocktail">
-				<button class="col-xs-push-3 col-xs-6 shakebutton">Shake my mood</button>
-			</div>
-		</div>
+				<button class="col-xs-push-2 col-xs-3 buttonInlove" id="moodButton" onclick="getrandomCocktail()">In love</button>
+				<button class="col-xs-push-3 col-xs-3 buttonConsidered" id="moodButton" onclick="getrandomCocktail()">Considered</button>
+			</div><!--end of row-->
+		</div><!--end of container-->
 	</main>
 
 	<section>
-		<input type="text" id="searchCocktail">
+		<div class="container">
+			<div class="row">
+				<h3>If you know what you want, search for your drink here:</h3>
+				<input type="text" class="col-xs-offset-2 col-xs-6" id="searchCocktail">
+				<button class="col-xs-2 shakebutton">Shake</button>
+			</div><!--end of row-->
+		</div>
+
 	</section>
+
 	<script src="js/main.js"></script>
 </body>
 </html>

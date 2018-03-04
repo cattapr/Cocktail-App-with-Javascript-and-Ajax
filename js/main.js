@@ -7,10 +7,10 @@ searchCocktail.addEventListener('change', () => {
 
 
 //function calling API to get random cocktail on click
-  getrandomCocktail();
+getrandomCocktail();
 
 function getrandomCocktail(){
-
+	
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
     .then((response) => response.json())
     .then((cocktailData) =>  {
