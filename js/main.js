@@ -1,3 +1,4 @@
+//global variabel, get inputvalue despite of it changing 
 const searchCocktail = document.getElementById('searchCocktail');
 
 searchCocktail.addEventListener('change', () => {
@@ -6,9 +7,7 @@ searchCocktail.addEventListener('change', () => {
 })
 
 
-//function calling API to get random cocktail on click
-
-
+//function calling API to get random cocktail 
 function getrandomCocktail() {
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
@@ -18,7 +17,7 @@ function getrandomCocktail() {
             console.log(cocktailData)
         })
         .catch((error) => {
-            console.log(error);
+            console.log(error)
         })
 }
 
@@ -31,14 +30,18 @@ function getCocktailByName(cocktail) {
             displayinputvalue(cocktailData)
         })
         .catch((error) => {
-            console.log(error);
+            if(document.getElementById("searchCocktail").value == ""){
+            	showErrMsg(error)
+            } else {
+            	hideErrMsg(error)
+            };
         })
 }
 
 
 //Function that prints out cocktailinfo when clicking on moodbuttons
 function displayrandomCocktail(cocktailData) {
-     const { drinks } = cocktailData;
+    const { drinks } = cocktailData;
     const cocktailpictureElement = document.getElementById('cocktailPicture');
     let cocktailPicture = `
     <img class="drinkThumb" src= "${drinks[0].strDrinkThumb}">
@@ -50,11 +53,11 @@ function displayrandomCocktail(cocktailData) {
     let cocktailInfo = `
     <h4 class="cocktailName"> ${drinks[0].strDrink} </h4>
     <p>Type of glass: <br> ${drinks[0].strGlass}</p>
-    <p class="howtomakeTitle">How to make:</p>
+    <p>How to make:</p>
     <p>${drinks[0].strMeasure1} ${drinks[0].strIngredient1}<br>
     ${drinks[0].strMeasure2} ${drinks[0].strIngredient2}<br>
     ${drinks[0].strMeasure3} ${drinks[0].strIngredient3}<br>
-    ${drinks[0].strInstructions}</p>
+    <br>${drinks[0].strInstructions}</p>
     `;
 
     cocktailInfoElement.innerHTML = cocktailInfo;
@@ -75,11 +78,11 @@ function displayinputvalue(cocktailData) {
     let cocktailInfo = `
     <h4 class="cocktailName"> ${drinks[0].strDrink} </h4>
     <p>Type of glass: <br> ${drinks[0].strGlass}</p>
-      <p class="howtomakeTitle">How to make:</p>
+    <p>How to make:</p>
     <p>${drinks[0].strMeasure1} ${drinks[0].strIngredient1}<br>
     ${drinks[0].strMeasure2} ${drinks[0].strIngredient2}<br>
     ${drinks[0].strMeasure3} ${drinks[0].strIngredient3}<br>
-    ${drinks[0].strInstructions}</p>
+    <br>${drinks[0].strInstructions}</p>
     `;
 
     cocktailInfoElement.innerHTML = cocktailInfo;
@@ -87,9 +90,22 @@ function displayinputvalue(cocktailData) {
 }
 
 //Button shake
-$(document).ready(function(){
-	$("#buttonshake").click(function(){
-		$("#buttonshake").effect("shake",{times:4}, 400);
-	});
+$(document).ready(function() {
+    $("#shakebutton").click(function() {
+        $("#shakebutton").effect("shake", { times: 3 }, 450);
+    });
 });
 
+
+//Error display when searchvalue is empty and shake button has been clicked
+
+function showErrMsg(error) {
+	const errorDivElement = document.getElementById('errormsg');
+    const errormsg = `<p class="errormsg">You haven't told me what you want to drink.</p>`
+    errorDivElement.innerHTML = errormsg; 
+};
+
+function hideErrMsg(error) {
+	const errorDivElement = document.getElementById('errormsg');
+    errorDivElement.innerHTML = ""; 
+};
