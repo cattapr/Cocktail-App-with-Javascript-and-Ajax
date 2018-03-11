@@ -9,7 +9,6 @@ searchCocktail.addEventListener('change', () => {
 
 //function calling API to get random cocktail 
 function getrandomCocktail() {
-
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then((response) => response.json())
         .then((cocktailData) => {
@@ -20,7 +19,6 @@ function getrandomCocktail() {
             console.log(error)
         })
 }
-
 
 //function calling API to search cocktail by name 
 function getCocktailByName(cocktail) {
