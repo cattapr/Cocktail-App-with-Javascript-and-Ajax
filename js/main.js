@@ -8,8 +8,9 @@ searchCocktail.addEventListener('change', () => {
 
 
 
-//function calling API to get random cocktail 
-function getrandomCocktail() {
+//function with API to get random cocktail
+//and calling function displayrandomCocktail to print out the cocktailinfo 
+ function getrandomCocktail() {
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then((response) => response.json())
@@ -21,7 +22,8 @@ function getrandomCocktail() {
         })
 }
 
-//function calling API to search cocktail by name 
+//function with API to search cocktail by name 
+//and calling function displayinputvalue to print out the cocktailinfo 
 function getCocktailByName(cocktail) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`)
         .then((response) => response.json())
@@ -38,7 +40,7 @@ function getCocktailByName(cocktail) {
 }
 
 
-//Function that prints out cocktailinfo when clicking on moodbuttons
+//Function that creates what to display in html, called when clicking on moodButton
 function displayrandomCocktail(cocktailData) {
     const { drinks } = cocktailData;
     const cocktailpictureElement = document.getElementById('cocktailPicture');
@@ -73,7 +75,7 @@ function displayrandomCocktail(cocktailData) {
     }
 
 
-    //display thierd cocktailinfo
+    //display third cocktailinfo
     const cocktailInstructionsElement = document.getElementById('instructions');
     let instructions = `
     </br><p>${drinks[0].strInstructions}</p>`;
@@ -83,7 +85,8 @@ function displayrandomCocktail(cocktailData) {
 }
 
 
-//Function that prints out cocktailinfo by input value
+//Function that creates what to display in html
+//it is being called when clicking on shakebutton to display info from input value
 function displayinputvalue(cocktailData) {
     const { drinks } = cocktailData;
     const cocktailpictureElement = document.getElementById('cocktailPicture');
@@ -118,7 +121,7 @@ function displayinputvalue(cocktailData) {
     }
 
 
-    //display thierd cocktailinfo
+    //display third cocktailinfo
     const cocktailInstructionsElement = document.getElementById('instructions');
     let instructions = `
     </br><p>${drinks[0].strInstructions}</p>`;
@@ -135,7 +138,7 @@ $(document).ready(function() {
 });
 
 
-//Error display when searchvalue is empty and shake button has been clicked
+//Error to display when searchvalue is empty and shake button has been clicked
 
 function showErrMsg(error) {
     const errorDivElement = document.getElementById('errormsg');
