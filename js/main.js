@@ -15,7 +15,6 @@ function getrandomCocktail() {
         .then((response) => response.json())
         .then((cocktailData) => {
             displayrandomCocktail(cocktailData)
-            console.log(cocktailData)
         })
         .catch((error) => {
             console.log(error)
@@ -44,41 +43,42 @@ function displayrandomCocktail(cocktailData) {
     const { drinks } = cocktailData;
     const cocktailpictureElement = document.getElementById('cocktailPicture');
     let cocktailPicture = `
-    <img class="drinkThumb" src= "${drinks[0].strDrinkThumb}">
-  `;
+    <img class="drinkThumb" src= "${drinks[0].strDrinkThumb}">`;
 
     cocktailpictureElement.innerHTML = cocktailPicture;
 
-    const cocktailInfoElement = document.getElementById('cocktailInfo');
+    //display first cocktailinfo
+    const cocktailTitleElement = document.getElementById('cocktailTitle');
+
+    let cocktailInfo = `
+    <h4 class="cocktailName"> ${drinks[0].strDrink} </h4>
+    <p class="typeOfglass">Type of glass:</p><p>${drinks[0].strGlass}</p>
+    </br><p class="howToMake">How to make:</p>`
+
+    cocktailTitleElement.innerHTML = cocktailInfo;
+
+
+    //display second cocktailinfo
+    const cocktailInfoElement = document.getElementById('howTo');
+
     let result = '';
     for (var i = 1; i <= 15; i++) {
-
-
         let measures = 'strMeasure' + i;
         let ingridients = 'strIngredient' + i;
-        if ((drinks[0][measures]) && (drinks[0][ingridients]) !== " ") {
-            result = drinks[0][measures] + ' ' + drinks[0][ingridients];
+        if ((drinks[0][measures]) && (drinks[0][ingridients]) !== "") {
+            result = result + ` <p>${drinks[0][measures]} ${drinks[0][ingridients]}</p>`;
 
-            let info = `<li>${drinks[0][measures]} ${drinks[0][ingridients]}</li>`
-
-            cocktailInfoElement.innerHTML = info;
-
-
-            console.log(result)
+            cocktailInfoElement.innerHTML = result;
         };
     }
 
-    /*let cocktailInfo = `
-    <h4 class="cocktailName"> ${drinks[0].strDrink} </h4>
-    <p>Type of glass: <br> ${drinks[0].strGlass}</p>
-    <p>How to make:</p>
-    <p>${drinks[0].strMeasure1} ${drinks[0].strIngredient1}<br>
-    ${drinks[0].strMeasure2} ${drinks[0].strIngredient2}<br>
-    ${drinks[0].strMeasure3} ${drinks[0].strIngredient3}<br>
-    <br>${drinks[0].strInstructions}</p>
-    `;
-*/
 
+    //display thierd cocktailinfo
+    const cocktailInstructionsElement = document.getElementById('instructions');
+    let instructions = `
+    </br><p>${drinks[0].strInstructions}</p>`;
+
+    cocktailInstructionsElement.innerHTML = instructions;
 
 }
 
@@ -88,23 +88,42 @@ function displayinputvalue(cocktailData) {
     const { drinks } = cocktailData;
     const cocktailpictureElement = document.getElementById('cocktailPicture');
     let cocktailPicture = `
-    <img class="drinkThumb" src= "${drinks[0].strDrinkThumb}">
-  `;
+    <img class="drinkThumb" src= "${drinks[0].strDrinkThumb}">`;
 
     cocktailpictureElement.innerHTML = cocktailPicture;
 
-    const cocktailInfoElement = document.getElementById('cocktailInfo');
+    //display first cocktailinfo
+    const cocktailTitleElement = document.getElementById('cocktailTitle');
+
     let cocktailInfo = `
     <h4 class="cocktailName"> ${drinks[0].strDrink} </h4>
-    <p>Type of glass: <br> ${drinks[0].strGlass}</p>
-    <p>How to make:</p>
-    <p>${drinks[0].strMeasure1} ${drinks[0].strIngredient1}<br>
-    ${drinks[0].strMeasure2} ${drinks[0].strIngredient2}<br>
-    ${drinks[0].strMeasure3} ${drinks[0].strIngredient3}<br>
-    <br>${drinks[0].strInstructions}</p>
-    `;
+    <p class="typeOfglass">Type of glass:</p><p>${drinks[0].strGlass}</p>
+    </br><p class="howToMake">How to make:</p>`
 
-    cocktailInfoElement.innerHTML = cocktailInfo;
+    cocktailTitleElement.innerHTML = cocktailInfo;
+
+
+    //display second cocktailinfo
+    const cocktailInfoElement = document.getElementById('howTo');
+
+    let result = '';
+    for (var i = 1; i <= 15; i++) {
+        let measures = 'strMeasure' + i;
+        let ingridients = 'strIngredient' + i;
+        if ((drinks[0][measures]) && (drinks[0][ingridients]) !== "") {
+            result = result + ` <p>${drinks[0][measures]} ${drinks[0][ingridients]}</p>`;
+
+            cocktailInfoElement.innerHTML = result;
+        };
+    }
+
+
+    //display thierd cocktailinfo
+    const cocktailInstructionsElement = document.getElementById('instructions');
+    let instructions = `
+    </br><p>${drinks[0].strInstructions}</p>`;
+
+    cocktailInstructionsElement.innerHTML = instructions;
 
 }
 
