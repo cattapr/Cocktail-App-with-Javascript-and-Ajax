@@ -7,8 +7,10 @@ searchCocktail.addEventListener('change', () => {
 })
 
 
+
 //function calling API to get random cocktail 
 function getrandomCocktail() {
+
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then((response) => response.json())
         .then((cocktailData) => {
@@ -28,10 +30,10 @@ function getCocktailByName(cocktail) {
             displayinputvalue(cocktailData)
         })
         .catch((error) => {
-            if(document.getElementById("searchCocktail").value == ""){
-            	showErrMsg(error)
+            if (document.getElementById("searchCocktail").value == "") {
+                showErrMsg(error)
             } else {
-            	hideErrMsg(error)
+                hideErrMsg(error)
             };
         })
 }
@@ -48,7 +50,25 @@ function displayrandomCocktail(cocktailData) {
     cocktailpictureElement.innerHTML = cocktailPicture;
 
     const cocktailInfoElement = document.getElementById('cocktailInfo');
-    let cocktailInfo = `
+    let result = '';
+    for (var i = 1; i <= 15; i++) {
+
+
+        let measures = 'strMeasure' + i;
+        let ingridients = 'strIngredient' + i;
+        if ((drinks[0][measures]) && (drinks[0][ingridients]) !== " ") {
+            result = drinks[0][measures] + ' ' + drinks[0][ingridients];
+
+            let info = `<li>${drinks[0][measures]} ${drinks[0][ingridients]}</li>`
+
+            cocktailInfoElement.innerHTML = info;
+
+
+            console.log(result)
+        };
+    }
+
+    /*let cocktailInfo = `
     <h4 class="cocktailName"> ${drinks[0].strDrink} </h4>
     <p>Type of glass: <br> ${drinks[0].strGlass}</p>
     <p>How to make:</p>
@@ -57,8 +77,9 @@ function displayrandomCocktail(cocktailData) {
     ${drinks[0].strMeasure3} ${drinks[0].strIngredient3}<br>
     <br>${drinks[0].strInstructions}</p>
     `;
+*/
 
-    cocktailInfoElement.innerHTML = cocktailInfo;
+
 }
 
 
@@ -98,12 +119,12 @@ $(document).ready(function() {
 //Error display when searchvalue is empty and shake button has been clicked
 
 function showErrMsg(error) {
-	const errorDivElement = document.getElementById('errormsg');
+    const errorDivElement = document.getElementById('errormsg');
     const errormsg = `<p class="errormsg">You haven't told me what you want to drink.</p>`
-    errorDivElement.innerHTML = errormsg; 
+    errorDivElement.innerHTML = errormsg;
 };
 
 function hideErrMsg(error) {
-	const errorDivElement = document.getElementById('errormsg');
-    errorDivElement.innerHTML = ""; 
+    const errorDivElement = document.getElementById('errormsg');
+    errorDivElement.innerHTML = "";
 };
